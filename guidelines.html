@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSUT Resume Guidelines</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="logo">NSUT <span class="highlight">RESUME SOLUTIONS</span></div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">How It Works</a>
+                    <a href="resume-builder.html" class="nav-link">Build Resume</a>
+                    <a href="#" class="nav-link">Resume Tips</a>
+                    <a href="guidelines.html" class="nav-link active">Guidelines</a>
+                    
+                </div>
+                <div class="nav-actions">
+                    <button class="btn btn-primary" onclick="window.location.href='ats-scorer.html'">Check Score</button>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Guidelines Section -->
+        <section class="guidelines-section">
+            <div class="guidelines-container">
+                <div class="guidelines-header">
+                    <h1 class="guidelines-title">
+                        <span class="highlight">NSUT Resume Template</span>
+                    </h1>
+                    <!-- <p class="guidelines-subtitle">
+                        Official resume template and formatting guidelines for NSUT students
+                    </p> -->
+                </div>
+
+                <!-- Policy Notice -->
+                <div class="policy-notice">
+                    <div class="policy-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="policy-text">
+                        <h3>Important Point</h3>
+                        <p>According to NSUT Placement Policy: <strong>"Resumes should be made on the Official NSUT Template only. No other template is allowed."</strong></p>
+                    </div>
+                </div>
+
+                <!-- Template Display -->
+                <div class="template-section">
+                    <!-- <h2 class="section-title">Official NSUT Resume Template</h2> -->
+                    
+                    <div class="pdf-container">
+                        <iframe 
+                            src="documents/nsut-resume-template.pdf#toolbar=1&navpanes=0&scrollbar=1&view=FitV&zoom=85" 
+                            class="pdf-viewer pdf-optimal-view"
+                            title="NSUT Resume Template">
+                            <p>Your browser does not support PDF viewing. 
+                            <a href="documents/nsut-resume-template.pdf" target="_blank">Download the PDF</a>
+                            </p>
+                        </iframe>
+                    </div>
+
+                    <div class="template-actions">
+                        <button class="btn btn-primary btn-lg" onclick="window.open('https://www.overleaf.com/latex/templates/nsut-tnp-resume/sxzbtkwmqsyg', '_blank')">
+                            <i class="fas fa-external-link-alt"></i>
+                            Get Overleaf Template
+                        </button>
+                        <button class="btn btn-outline btn-lg" onclick="window.open('documents/nsut-resume-template.pdf', '_blank')">
+                            <i class="fas fa-download"></i>
+                            Download PDF
+                        </button>
+                    </div>
+                </div>
+
+
+
+                <!-- Guidelines Content -->
+                <div class="guidelines-content">
+                    <div class="guideline-card">
+                        <h3>Format Suggestions</h3>
+                        <ul>
+                            <li>Use only the NSUT TnP resume template</li>
+                            <li>Create your Resume with latex using the Overleaf template</li>
+                            <li>Do not modify fonts or spacing, you may add or remove sections</li>
+                            <li>Keep the resume to maximum 1 page</li>
+                        </ul>
+                    </div>
+
+                    <div class="guideline-card">
+                        <h3>Content Suggestions</h3>
+                        <ul>
+                            <li>Include accurate personal and academic information</li>
+                            <li>List relevant technical skills and projects</li>
+                            <li>Highlight internships and work experience</li>
+                            <li>Use clear, concise, and professional language</li>
+                        </ul>
+                    </div>
+
+                    <div class="guideline-card">
+                        <h3>ATS Optimization Tips</h3>
+                        <ul>
+                            <li>Use standard section headings</li>
+                            <li>Include relevant keywords from job descriptions</li>
+                            <li>Avoid graphics, images, or unusual formatting</li>
+                            <li>Save and submit as PDF format</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

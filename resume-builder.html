@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Resume</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="resume-builder.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,">
+
+</head>
+<body>
+    <div class="app-container" style ="overflow: auto;">
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    NSUT <span class="highlight">RESUME SOLUTIONS</span>
+                </a>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="resume-builder.html" class="nav-link active">Build Resume</a>
+                    <a href="resume-tips.html" class="nav-link">Resume Tips</a>
+                    <a href="guidelines.html" class="nav-link">Guidelines</a>
+                    <a href="ats-scorer.html" class="nav-link">ATS Scorer</a>
+                </div>
+                
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Resume Builder -->
+        <div class="resume-builder">
+            <!-- Form Panel -->
+            <div class="form-panel">
+                <div class="form-header">
+                    <h1>Build Your NSUT Resume</h1>
+                    <p>Create a professional resume following NSUT guidelines</p>
+                </div>
+
+                <form id="resumeForm">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn Profile *</label>
+                            <input type="url" id="linkedin" name="linkedin" required>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="degree">Degree *</label>
+                                <input type="text" id="degree" name="degree" placeholder="B.Tech (Computer Science)" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gradYear">Graduation Year *</label>
+                                <input type="number" id="gradYear" name="gradYear" min="2020" max="2030" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cgpa">CGPA *</label>
+                            <input type="number" id="cgpa" name="cgpa" step="0.01" min="0" max="10" required>
+                        </div>
+                        
+                        <!-- Class XII -->
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="includeClass12" name="includeClass12">
+                            <label for="includeClass12">Include Class XII Details</label>
+                        </div>
+                        <div id="class12Section" class="conditional-section">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="school12">School Name</label>
+                                    <input type="text" id="school12" name="school12">
+                                </div>
+                                <div class="form-group">
+                                    <label for="year12">Year</label>
+                                    <input type="number" id="year12" name="year12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="marks12">Percentage</label>
+                                <input type="number" id="marks12" name="marks12" step="0.01" min="0" max="100">
+                            </div>
+                        </div>
+                        
+                        <!-- Similar structure for Class X -->
+                        <!-- Include Class X Details -->
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="includeClass10" name="includeClass10">
+                            <label for="includeClass10">Include Class X Details</label>
+                        </div>
+                        <div id="class10Section" class="conditional-section">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="school10">School Name</label>
+                                    <input type="text" id="school10" name="school10">
+                                </div>
+                                <div class="form-group">
+                                    <label for="year10">Year</label>
+                                    <input type="number" id="year10" name="year10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="marks10">Percentage</label>
+                                <input type="number" id="marks10" name="marks10" step="0.01" min="0" max="100">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Dynamic Sections -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-briefcase"></i> Internships</h3>
+                        <div id="internshipsContainer">
+                            <!-- Dynamic internship forms will be added here -->
+                        </div>
+                        <button type="button" class="add-btn" onclick="addInternship()">
+                            <i class="fas fa-plus"></i> Add Internship
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-project-diagram"></i> Projects</h3>
+                        <div id="projectsContainer">
+                            <!-- Dynamic project forms will be added here -->
+                        </div>
+                        <button type="button" class="add-btn" onclick="addProject()">
+                            <i class="fas fa-plus"></i> Add Project
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-medal"></i> Positions of Responsibility</h3>
+                        <div id="positionsContainer">
+                            <!-- Dynamic positions forms will be added here -->
+                        </div>
+                        <button type="button" class="add-btn" onclick="addPosition()">
+                            <i class="fas fa-plus"></i> Add Position
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-trophy"></i> Academic Achievements</h3>
+                        <div class="form-group">
+                            <label for="achievements">Achievements (one per line)</label>
+                            <textarea id="achievements" name="achievements" rows="4" placeholder="Enter each achievement on a new line"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-code"></i> Technical Skills</h3>
+                        <div class="form-group">
+                            <label for="skills">Skills & Tools *</label>
+                            <textarea id="skills" name="skills" rows="3" placeholder="Python, Java, React, Node.js, MySQL, Git..." required></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Panel -->
+            <div class="preview-panel">
+                <div class="preview-header">
+                    <h2>Resume Latex Code</h2>
+                    <div class="preview-actions">
+                        <button class="btn btn-outline" id="downloadBtn">
+                            <i class="fas fa-download"></i> Download TEX File
+                        </button>
+                        <button class="btn btn-primary" id="compileBtn">
+                            <i class="fas fa-sync-alt"></i> Recompile
+                        </button>
+                    </div>
+                </div>
+                <div class="preview-container">
+                    <iframe id="previewFrame" src="about:blank" style="overflow: auto;"></iframe>
+                    <div id="loadingIndicator" class="loading-indicator">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Generating preview...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="resume-builder.js"></script>
+</body>
+</html>

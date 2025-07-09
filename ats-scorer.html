@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESUME SCORER</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="logo">NSUT <span class="highlight">RESUME SOLUTIONS</span></div>
+                <div class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">How It Works</a>
+                    <a href="resume-builder.html" class="nav-link">Build Resume</a>
+                    <a href="resume-tips.html" class="nav-link">Resume Tips</a>
+                    <a href="guidelines.html" class="nav-link">Guidelines</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="btn btn-primary" id="getStartedBtn">Upload Resume</button>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Upload Section -->
+            <div class="upload-section" id="uploadSection">
+                <div class="upload-container">
+                    <h1 class="upload-title">
+                        Upload Your <span class="highlight">Resume</span>
+                    </h1>
+                    <p class="upload-subtitle">
+                        Get instant ATS compatibility score and detailed feedback
+                    </p>
+                    
+                    <!-- Drag & Drop Zone -->
+                    <div class="drop-zone" id="dropZone">
+                        <div class="drop-zone-content">
+                            <i class="fas fa-cloud-upload-alt drop-icon"></i>
+                            <h3>Drag & Drop Your Resume Here</h3>
+                            <p>or click to browse files</p>
+                            <button class="btn btn-outline" id="browseBtn">
+                                <i class="fas fa-folder-open"></i>
+                                Browse Files
+                            </button>
+                            <p class="file-info">Supports PDF format only • Max 5MB</p>
+                        </div>
+                        <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                    </div>
+
+                    <!-- Upload Progress -->
+                    <div class="upload-progress" id="uploadProgress" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <p class="progress-text" id="progressText">Uploading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <!-- Sidebar -->
+                <div class="sidebar" id="sidebar">
+                    <div class="sidebar-header">
+                        <h2>ATS Score</h2>
+                        <button class="close-btn" id="closeSidebar">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Overall Score -->
+                    <div class="score-card">
+                        <div class="score-circle">
+                            <div class="score-value" id="overallScore">--</div>
+                            <div class="score-label">Overall</div>
+                        </div>
+                    </div>
+
+                    <!-- Section Scores -->
+                    <div class="section-scores" id="sectionScores">
+                        <h3>Section Breakdown</h3>
+                        <!-- Scores will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="quick-stats" id="quickStats">
+                        <div class="stat-item">
+                            <span class="stat-label">Keywords Found</span>
+                            <span class="stat-value" id="keywordsFound">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Sections Detected</span>
+                            <span class="stat-value" id="sectionsDetected">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Format Score</span>
+                            <span class="stat-value" id="formatScore">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="content-area" id="contentArea">
+                    <!-- Tab Navigation -->
+                    <div class="tab-navigation">
+                        <button class="tab-btn active" data-tab="resume">
+                            <i class="fas fa-file-pdf"></i>
+                            Your Resume
+                        </button>
+                        <button class="tab-btn" data-tab="suggestions">
+                            <i class="fas fa-lightbulb"></i>
+                            Suggestions
+                        </button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- Resume Tab -->
+                        <div class="tab-pane active" id="resumeTab">
+                            <div class="resume-viewer">
+                                <iframe id="resumeViewer" class="pdf-frame" title="Your Resume"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Suggestions Tab -->
+                        <div class="tab-pane" id="suggestionsTab">
+                            <div class="suggestions-container">
+                                <h2>Improvement Suggestions</h2>
+                                <div class="suggestions-list" id="suggestionsList">
+                                    <!-- Suggestions will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script src="ats-scorer.js"></script>
+</body>
+</html>
