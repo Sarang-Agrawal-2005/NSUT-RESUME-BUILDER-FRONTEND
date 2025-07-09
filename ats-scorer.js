@@ -1,7 +1,7 @@
 // ATS Scorer JavaScript
 class ATSScorer {
     constructor() {
-        this.apiUrl = 'https://nsut-ats-scorer-backend.onrender.com'; // Backend URL
+        this.apiUrl = 'https://nsut-resume-builder-backend.onrender.com/'; // Backend URL
         this.currentFile = null;
         this.initializeEventListeners();
     }
