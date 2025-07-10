@@ -3,7 +3,7 @@ class ResumeBuilder {
         // Auto-detect environment
         this.apiUrl = window.location.hostname === 'localhost' 
             ? 'http://localhost:8000' 
-            : 'https://nsut-ats-scorer-backend.onrender.com'; // Update with your production URL
+            : 'https://nsut-resume-builder-backend.onrender.com'; // Update with your production URL
             
         this.currentData = {};
         this.debounceTimer = null;
