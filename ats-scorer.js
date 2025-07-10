@@ -1,7 +1,9 @@
 // ATS Scorer JavaScript
 class ATSScorer {
     constructor() {
-        this.apiUrl = 'https://nsut-ats-scorer-backend.onrender.com'; // Backend URL
+        this.apiUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:8000' 
+            : 'https://nsut-ats-scorer-backend.onrender.com'; // Update with your production URL
         this.currentFile = null;
         this.initializeEventListeners();
     }

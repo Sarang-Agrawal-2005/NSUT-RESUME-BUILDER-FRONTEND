@@ -199,70 +199,74 @@ class ResumeBuilder {
     async updatePreview() {
         const loadingIndicator = document.getElementById('loadingIndicator');
         const previewFrame = document.getElementById('previewFrame');
-        
+        const placeholder = document.getElementById('previewPlaceholder');
+
         try {
             if (loadingIndicator) {
-                loadingIndicator.style.display = 'flex';
+            loadingIndicator.style.display = 'flex';
             }
-            
+
             const data = this.collectFormData();
-            console.log('Sending data:', data);
-            
-            // Validate required fields
+
+            // Show placeholder if required field (e.g., name) is missing
             if (!data.personal.name) {
-                throw new Error('Name is required');
+            if (placeholder) placeholder.style.display = 'flex';
+            if (previewFrame) previewFrame.style.display = 'none';
+            if (loadingIndicator) loadingIndicator.style.display = 'none';
+            return;
+            } else {
+            if (placeholder) placeholder.style.display = 'none';
+            if (previewFrame) previewFrame.style.display = 'block';
             }
-            
+
             const response = await fetch(`${this.apiUrl}/api/compile-resume`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
             });
 
             if (!response.ok) {
-                // Try to get error details from response
-                let errorDetail = 'Unknown error';
-                try {
-                    const errorData = await response.json();
-                    errorDetail = errorData.detail || errorData.error || errorDetail;
-                    console.error('Server error details:', errorData);
-                } catch (e) {
-                    errorDetail = await response.text();
-                }
-                throw new Error(`Server error (${response.status}): ${errorDetail}`);
+            let errorDetail = 'Unknown error';
+            try {
+                const errorData = await response.json();
+                errorDetail = errorData.detail || errorData.error || errorDetail;
+                console.error('Server error details:', errorData);
+            } catch (e) {
+                errorDetail = await response.text();
+            }
+            throw new Error(`Server error (${response.status}): ${errorDetail}`);
             }
 
-            // Check if response is JSON (fallback) or PDF (success)
             const contentType = response.headers.get('content-type');
-            
             if (contentType && contentType.includes('application/json')) {
-                // Handle fallback response
-                const result = await response.json();
-                if (result.compilation_failed || result.latex_source) {
-                    this.showLatexFallback(result);
-                } else {
-                    throw new Error(result.error || 'Compilation failed');
-                }
+            const result = await response.json();
+            if (result.compilation_failed || result.latex_source) {
+                this.showLatexFallback(result);
             } else {
-                // Handle PDF response
-                const blob = await response.blob();
-                const pdfUrl = URL.createObjectURL(blob);
-                if (previewFrame) {
-                    previewFrame.src = pdfUrl;
-                }
+                throw new Error(result.error || 'Compilation failed');
             }
-            
+            } else {
+            const blob = await response.blob();
+            const pdfUrl = URL.createObjectURL(blob);
+            if (previewFrame) {
+                previewFrame.src = pdfUrl;
+            }
+            }
         } catch (error) {
             console.error('Preview update failed:', error);
             this.showErrorMessage(`Preview failed: ${error.message}`);
+            // Optionally, show the placeholder again if there's an error
+            const placeholder = document.getElementById('previewPlaceholder');
+            const previewFrame = document.getElementById('previewFrame');
+            if (placeholder) placeholder.style.display = 'flex';
+            if (previewFrame) previewFrame.style.display = 'none';
         } finally {
             if (loadingIndicator) {
-                loadingIndicator.style.display = 'none';
+            loadingIndicator.style.display = 'none';
             }
         }
     }
+
 
     async downloadResume() {
         try {
@@ -534,6 +538,158 @@ class ResumeBuilder {
             }
         } catch (error) {
             console.error('Error populating form:', error);
+        }
+    }
+}
+
+// Dynamic item management functions
+function addInternship() {
+    const container = document.getElementById('internshipsContainer');
+    if (!container) return;
+    
+    const itemId = `internship_${Date.now()}`;
+    
+    const internshipHTML = `
+        <div class="dynamic-item" data-id="${itemId}">
+            <div class="dynamic-header">
+                <h4>Internship</h4>
+                <button type="button" class="remove-btn" onclick="removeItem('${itemId}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Position Title *</label>
+                    <input type="text" name="${itemId}Title" required>
+                </div>
+                <div class="form-group">
+                    <label>Company *</label>
+                    <input type="text" name="${itemId}Company" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="${itemId}Location">
+                </div>
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="text" name="${itemId}StartDate" placeholder="Jun 2023">
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="text" name="${itemId}EndDate" placeholder="Aug 2023">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Key Responsibilities (one per line)</label>
+                <textarea name="${itemId}Responsibilities" rows="3" placeholder="Enter each responsibility on a new line"></textarea>
+            </div>
+        </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', internshipHTML);
+    addEventListenersToNewItem();
+}
+
+function addProject() {
+    const container = document.getElementById('projectsContainer');
+    if (!container) return;
+    
+    const itemId = `project_${Date.now()}`;
+    
+    const projectHTML = `
+        <div class="dynamic-item" data-id="${itemId}">
+            <div class="dynamic-header">
+                <h4>Project</h4>
+                <button type="button" class="remove-btn" onclick="removeItem('${itemId}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="form-group">
+                <label>Project Title *</label>
+                <input type="text" name="${itemId}Title" required>
+            </div>
+            <div class="form-group">
+                <label>Description & Tech Stack (one per line)</label>
+                <textarea name="${itemId}Description" rows="3" placeholder="Enter project description and tech stack, one point per line"></textarea>
+            </div>
+        </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', projectHTML);
+    addEventListenersToNewItem();
+}
+
+function addPosition() {
+    const container = document.getElementById('positionsContainer');
+    if (!container) return;
+    
+    const itemId = `position_${Date.now()}`;
+    
+    const positionHTML = `
+        <div class="dynamic-item" data-id="${itemId}">
+            <div class="dynamic-header">
+                <h4>Position of Responsibility</h4>
+                <button type="button" class="remove-btn" onclick="removeItem('${itemId}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Position Title *</label>
+                    <input type="text" name="${itemId}Title" required>
+                </div>
+                <div class="form-group">
+                    <label>Organization *</label>
+                    <input type="text" name="${itemId}Organization" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="text" name="${itemId}StartDate" placeholder="Jan 2023">
+                </div>
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="text" name="${itemId}EndDate" placeholder="Dec 2023">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Key Responsibilities (one per line)</label>
+                <textarea name="${itemId}Responsibilities" rows="4" placeholder="Enter each responsibility on a new line"></textarea>
+            </div>
+        </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', positionHTML);
+    addEventListenersToNewItem();
+}
+
+function removeItem(itemId) {
+    const item = document.querySelector(`[data-id="${itemId}"]`);
+    if (item) {
+        item.remove();
+        // Trigger save and preview update
+        if (window.resumeBuilder) {
+            window.resumeBuilder.saveToLocalStorage();
+            window.resumeBuilder.schedulePreviewUpdate();
+        }
+    }
+}
+
+function addEventListenersToNewItem() {
+    // Add event listeners to newly created form elements
+    if (window.resumeBuilder) {
+        const lastDynamicItem = document.querySelector('.dynamic-item:last-child');
+        if (lastDynamicItem) {
+            const newInputs = lastDynamicItem.querySelectorAll('input, textarea');
+            newInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    window.resumeBuilder.saveToLocalStorage();
+                    window.resumeBuilder.schedulePreviewUpdate();
+                });
+            });
         }
     }
 }
