@@ -543,7 +543,7 @@ class ResumeBuilder {
 }
 
 // Dynamic item management functions
-function addInternship() {
+function addInternship() { // called dynamically from resume-builder.html
     const container = document.getElementById('internshipsContainer');
     if (!container) return;
     
@@ -592,7 +592,7 @@ function addInternship() {
     addEventListenersToNewItem();
 }
 
-function addProject() {
+function addProject() { // called dynamically from resume-builder.html
     const container = document.getElementById('projectsContainer');
     if (!container) return;
     
@@ -621,7 +621,7 @@ function addProject() {
     addEventListenersToNewItem();
 }
 
-function addPosition() {
+function addPosition() { // called dynamically from resume-builder.html
     const container = document.getElementById('positionsContainer');
     if (!container) return;
     
