@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats - NSUT ATS Scorer</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">PLACEMENT <span class="highlight">READY</span></div>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+                <a href="ats-scorer.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    Check ATS Score
+                </a>
+                <!-- <a href="guidelines.html" class="nav-link">
+                    <i class="fas fa-file-alt"></i>
+                    Guidelines
+                </a> -->
+                <!-- <a href="resume-tips.html" class="nav-link">
+                    <i class="fas fa-lightbulb"></i>
+                    Resume Tips
+                </a> -->
+                <a href="resume-builder.html" class="nav-link">
+                    <i class="fas fa-hammer"></i>
+                    Build Resume
+                </a>
+                <a href="interview.html" class="nav-link">
+                    <i class="fa-solid fa-robot"></i>
+                    Mock Interview
+                </a>
+                <a href="stats.html" class="nav-link active">
+                    <i class="fas fa-chart-bar"></i>
+                    Placement Data
+                </a>
+                <a href="forum.html" class="nav-link">
+                    <i class="fas fa-comments"></i>
+                    Forum
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <!-- <a href="ats-scorer.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    ATS Scorer
+                </a> -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="stats-main">
+        <!-- Stats Header -->
+        <!-- <section class="stats-header">
+            <div class="stats-container">
+                <div class="stats-header-content">
+                    <h1 class="stats-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Platform <span class="highlight">Statistics</span>
+                    </h1>
+                    <p class="stats-subtitle">
+                        Real-time analytics and insights about resume scoring trends, 
+                        user engagement, and platform performance metrics.
+                    </p>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Embedded Content Container -->
+        <section class="embedded-content-section">
+            <div class="stats-container">
+                <!-- <div class="embedded-wrapper">
+                    <div class="embedded-header">
+                        <div class="embedded-controls">
+                            <div class="control-buttons">
+                                <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()">
+                                    <i class="fas fa-expand"></i>
+                                    Fullscreen
+                                </button>
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <div class="embedded-container" id="embeddedContainer">
+                        <!-- Replace 'YOUR_EMBEDDED_WEBSITE_URL' with the actual URL you want to embed -->
+                        <iframe 
+                            id="embeddedFrame"
+                            src="https://www.nsutplacement.in/" 
+                            frameborder="0"
+                            allowfullscreen
+                            loading="lazy"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                            title="Embedded Statistics Dashboard">
+                        </iframe>
+                        
+                        <!-- Loading indicator -->
+                        <div class="loading-overlay" id="loadingOverlay">
+                            <div class="loading-content">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading Placement Data...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Error fallback -->
+                        <div class="error-fallback" id="errorFallback" style="display: none;">
+                            <div class="error-content">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Unable to load content</h3>
+                                <p>The embedded content could not be loaded. Please try refreshing the page or contact support.</p>
+                                <button class="btn btn-primary" onclick="refreshEmbeddedContent()">
+                                    <i class="fas fa-redo"></i>
+                                    Try Again
+                                </button>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+                            <h2 style="margin: 0;"><i class="fa-solid fa-face-smile"></i> Credit:</h2>
+                            <a href="https://www.nsutplacement.in/" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.3rem 0.3rem;">
+                                <i class="fas fa-caret-up"></i> nsutplacement.in
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        
+    </main>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <script>
+        // Embedded content functionality
+        let isFullscreen = false;
+        const embeddedFrame = document.getElementById('embeddedFrame');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const errorFallback = document.getElementById('errorFallback');
+
+        // Handle iframe loading
+        embeddedFrame.addEventListener('load', function() {
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 1000);
+        });
+
+        // Handle iframe errors
+        embeddedFrame.addEventListener('error', function() {
+            loadingOverlay.style.display = 'none';
+            errorFallback.style.display = 'flex';
+        });
+
+        // Refresh embedded content
+        function refreshEmbeddedContent() {
+            loadingOverlay.style.display = 'flex';
+            errorFallback.style.display = 'none';
+            
+            const currentSrc = embeddedFrame.src;
+            embeddedFrame.src = '';
+            setTimeout(() => {
+                embeddedFrame.src = currentSrc;
+            }, 100);
+        }
+
+        // Toggle fullscreen
+        function toggleFullscreen() {
+            const container = document.getElementById('embeddedContainer');
+            const fullscreenBtn = document.querySelector('.fullscreen-btn');
+            
+            if (!isFullscreen) {
+                container.classList.add('fullscreen-mode');
+                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
+                isFullscreen = true;
+                
+                // Try to use browser fullscreen API
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+            } else {
+                container.classList.remove('fullscreen-mode');
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+                isFullscreen = false;
+                
+                // Exit browser fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Listen for fullscreen changes
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement) {
+                document.getElementById('embeddedContainer').classList.remove('fullscreen-mode');
+                document.querySelector('.fullscreen-btn').innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+                isFullscreen = false;
+            }
+        });
+
+        // Handle responsive iframe
+        function handleResponsiveFrame() {
+            const container = document.getElementById('embeddedContainer');
+            const frame = document.getElementById('embeddedFrame');
+            
+            if (window.innerWidth <= 768) {
+                frame.style.height = '60vh';
+            } else {
+                frame.style.height = '80vh';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', handleResponsiveFrame);
+        window.addEventListener('resize', handleResponsiveFrame);
+    </script>
+</body>
+
+</html>
