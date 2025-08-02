@@ -3,80 +3,499 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSUT Resume Solutions</title>
-    <link rel="stylesheet" href="main.css">
+    <title>NSUT ATS Scorer - AI-Powered Resume Optimization</title>
+    <meta name="description" content="Get your resume ATS-ready with our AI-powered scoring system. Built specifically for NSUT students following official placement guidelines.">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Navigation -->
-        <nav class="navbar" id="navbar">
-            <div class="nav-container">
-                <div class="logo">NSUT <span class = "highlight">RESUME SOLUTIONS</span></div>
-                <div class="nav-links" id="navLinks">
-                    <a href="#" class="nav-link">How It Works</a>
-                    <a href="resume-builder.html" class="nav-link">Build Resume</a>
-                    <a href="#" class="nav-link">Resume Tips</a>
-                    <a href="#" class="nav-link">Guidelines</a>
-                </div>
-
-                <div class="nav-actions">
-                    <button class="btn btn-primary" onclick="window.location.href='ats-scorer.html'">Upload Resume</button>
-                </div>
-                <div class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                PLACEMENT <span class="highlight">READY</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link active">
+                    <i class="fa-solid fa-house"></i>
+                    Home
+                </a>
+                <a href="ats-scorer.html" class="nav-link">
+                    <i class="fas fa-chart-line"></i>
+                    Check ATS Score
+                </a>
+                <!-- <a href="guidelines.html" class="nav-link">
+                    <i class="fas fa-file-alt"></i>
+                    Guidelines
+                </a> -->
+                <!-- <a href="resume-tips.html" class="nav-link">
+                    <i class="fas fa-lightbulb"></i>
+                    Resume Tips
+                </a> -->
+                <a href="resume-builder.html" class="nav-link">
+                    <i class="fas fa-hammer"></i>
+                    Build Resume
+                </a>
+                <a href="interview.html" class="nav-link">
+                    <i class="fa-solid fa-robot"></i>
+                    Mock Interview
+                </a>
+                <a href="stats.html" class="nav-link">
+                    <i class="fas fa-chart-bar"></i>
+                    Placement Statistics
+                </a>
             </div>
-        </nav>
+            
+            <div class="nav-actions">
+                <!-- <a href="ats-scorer.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    ATS Scorer
+                </a> -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-        <!-- Hero Section -->
-        <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+            </div>
+        </div>
+        
+        <div class="hero-container">
             <div class="hero-content">
+                <!-- <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>AI-Powered Resume Analysis</span>
+                </div> -->
+                
                 <h1 class="hero-title">
-                    <span class="highlight">A Complete Resume Solution</span> for the Students of <span class="highlight">NSUT</span>
+                    Get Yourself <span class="highlight">Placement-Ready</span>
+                    <br>Prepare to Get <span class="highlight">Hired Faster</span>
                 </h1>
+                
                 <p class="hero-subtitle">
-                    Resume Creation and Advanced Resume Analysis designed for the <span class = "highlight">NSUT Resume Format</span>.<br> Build your Resume now and get instant compatibility scores to improve your Resume.
+                    Optimize your placement journey with our platform designed specifically for <span class="highlight">NSUT Students</span>. 
+                    Build your ATS-Optimized Resume, Take Mock-Interviews, Get instant feedback and actionable suggestions to boost your chances of landing your dream job.
                 </p>
+                
+                <!-- <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Resumes Analyzed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Students Placed</div>
+                    </div>
+                </div> -->
                 <div class="hero-actions">
-                    <button class="btn btn-primary btn-lg" onclick="window.location.href='ats-scorer.html'">Check Score</button>
-                    <button class="btn btn-outline btn-lg" onclick="window.location.href='resume-builder.html'">
-                        <i class="fas fa-certificate"></i>
+                    <a href="ats-scorer.html" class="btn btn-primary btn-lg" id="getStartedBtn">
+                        <i class="fas fa-chart-line"></i>
+                        Analyze Resume
+                        <!-- <span class="btn-arrow">→</span> -->
+                    </a>
+                    <a href="guidelines.html" class="btn btn-outline btn-lg">
+                        <i class="fas fa-hammer"></i>
                         Build Resume
-                    </button>
-
+                    </a>
                 </div>
-
+                
+                <div class="hero-actions">
+                    <a href="ats-scorer.html" class="btn btn-primary btn-lg" id="getStartedBtn">
+                        <i class="fa-solid fa-robot"></i>
+                        Take Mock Interview
+                        <!-- <span class="btn-arrow">→</span> -->
+                    </a>
+                    <a href="guidelines.html" class="btn btn-outline btn-lg">
+                        <i class="fas fa-chart-bar"></i>
+                        Placement Data 
+                    </a>
+                </div>
+                
+                <div class="hero-trust">
+                    <!-- <div class="trust-text">Trusted by NSUT Placement Cell</div>
+                    <div class="trust-badges">
+                        <span class="trust-badge">Official Template</span>
+                        <span class="trust-badge">AI-Powered</span>
+                        <span class="trust-badge">Free Forever</span>
+                    </div> -->
+                </div>
             </div>
-            <div class="hero-image">
-                <div class="hero-visual">
-                    <div class="floating-card">
-                        
-                        <span>Accurate</span>
+            
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <div class="dashboard-mockup">
+                        <div class="mockup-header">
+                            <div class="mockup-controls">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="mockup-title">ATS Score Dashboard</div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="score-display">
+                                <div class="score-circle">
+                                    <div class="score-value">85</div>
+                                    <div class="score-label">ATS Score</div>
+                                </div>
+                                <div class="score-details">
+                                    <div class="score-item">
+                                        <span class="score-category">Keywords</span>
+                                        <span class="score-bar">
+                                            <span class="score-fill" style="width: 90%"></span>
+                                        </span>
+                                        <span class="score-percent">90%</span>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-category">Format</span>
+                                        <span class="score-bar">
+                                            <span class="score-fill" style="width: 85%"></span>
+                                        </span>
+                                        <span class="score-percent">85%</span>
+                                    </div>
+                                    <div class="score-item">
+                                        <span class="score-category">Structure</span>
+                                        <span class="score-bar">
+                                            <span class="score-fill" style="width: 80%"></span>
+                                        </span>
+                                        <span class="score-percent">80%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="floating-card">
-                        
-                        <span>NSUT Specific</span>
-                    </div>
-                    <div class="floating-card">
-                        
-                        <span>Instant Results</span>
-                    </div>
-                    <div class="floating-card">
-                        
+                </div>
+                
+                <div class="floating-elements">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-check-circle"></i>
                         <span>ATS Optimized</span>
                     </div>
-                    
-                    
+                    <div class="floating-card card-2">
+                        <i class="fas fa-star"></i>
+                        <span>High Score</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-rocket"></i>
+                        <span>Job Ready</span>
+                    </div>
+                    <div class="floating-card card-4">
+                        <i class="fas fa-target"></i>
+                        <span>Perfect Match</span>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Our Platform?</h2>
+                <p class="section-subtitle">
+                    Advanced AI technology meets NSUT placement requirements to give you the competitive edge
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">AI-Powered Analysis</h3>
+                    <p class="feature-description">
+                        Our advanced AI analyzes your resume against ATS algorithms used by top companies
+                    </p>
+                    <div class="feature-benefits">
+                        <span class="benefit">Deep Learning</span>
+                        <span class="benefit">Real-time Analysis</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="feature-title">NSUT Guidelines Compliant</h3>
+                    <p class="feature-description">
+                        Built specifically for NSUT students following official placement cell guidelines
+                    </p>
+                    <div class="feature-benefits">
+                        <span class="benefit">Official Template</span>
+                        <span class="benefit">Placement Ready</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightning-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Instant Results</h3>
+                    <p class="feature-description">
+                        Get your ATS score and detailed feedback in seconds, not hours
+                    </p>
+                    <div class="feature-benefits">
+                        <span class="benefit">Under 30 Seconds</span>
+                        <span class="benefit">Detailed Report</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="feature-title">Actionable Suggestions</h3>
+                    <p class="feature-description">
+                        Receive specific, actionable recommendations to improve your resume score
+                    </p>
+                    <div class="feature-benefits">
+                        <span class="benefit">Priority Based</span>
+                        <span class="benefit">Step-by-step</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Privacy First</h3>
+                    <p class="feature-description">
+                        Your resume data is processed securely and never stored permanently
+                    </p>
+                    <div class="feature-benefits">
+                        <span class="benefit">Secure Processing</span>
+                        <span class="benefit">No Data Storage</span>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="feature-title">Unlimited Access</h3>
+                    <p class="feature-description">
+                        Check your resume as many times as you want - completely free forever
+                    </p>
+                    <div class="feature-benefits">
+                        <span class="benefit">No Limits</span>
+                        <span class="benefit">Always Free</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="how-it-works-container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">
+                    Get your ATS score in three simple steps
+                </p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Upload Your Resume</h3>
+                        <p class="step-description">
+                            Simply drag and drop your PDF resume or click to browse and upload
+                        </p>
+                        <div class="step-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">AI Analysis</h3>
+                        <p class="step-description">
+                            Our AI analyzes your resume against ATS algorithms and NSUT guidelines
+                        </p>
+                        <div class="step-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Get Your Score</h3>
+                        <p class="step-description">
+                            Receive detailed feedback and actionable suggestions to improve your resume
+                        </p>
+                        <div class="step-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Optimize Your Resume?</h2>
+                <p class="cta-subtitle">
+                    Join thousands of NSUT students who have improved their job prospects with our ATS Scorer
+                </p>
+                <div class="cta-actions">
+                    <a href="ats-scorer.html" class="btn btn-primary btn-lg" id="startBuildingBtn">
+                        <i class="fas fa-rocket"></i>
+                        Start Analyzing Now
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="resume-builder.html" class="btn btn-outline btn-lg">
+                        <i class="fas fa-hammer"></i>
+                        Build New Resume
+                    </a>
+                </div>
+            </div>
+            
+            <div class="cta-visual">
+                <div class="success-metrics">
+                    <div class="metric">
+                        <div class="metric-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number">10,000+</div>
+                            <div class="metric-label">Students Helped</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number">500+</div>
+                            <div class="metric-label">Job Placements</div>
+                        </div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number">95%</div>
+                            <div class="metric-label">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="logo-icon">📊</span>
+                        NSUT <span class="highlight">ATS Scorer</span>
+                    </div>
+                    <p class="footer-description">
+                        AI-powered resume optimization tool designed specifically for NSUT students 
+                        to help them land their dream jobs.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Tools</h4>
+                        <ul class="footer-list">
+                            <li><a href="ats-scorer.html">ATS Scorer</a></li>
+                            <li><a href="resume-builder.html">Resume Builder</a></li>
+                            <li><a href="guidelines.html">NSUT Guidelines</a></li>
+                            <li><a href="resume-tips.html">Resume Tips</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Resources</h4>
+                        <ul class="footer-list">
+                            <li><a href="guidelines.html">Resume Template</a></li>
+                            <li><a href="resume-tips.html">Writing Guide</a></li>
+                            <li><a href="#">ATS Best Practices</a></li>
+                            <li><a href="#">Interview Tips</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Support</h4>
+                        <ul class="footer-list">
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Placement-Ready. Made with ❤️ for NSUT students.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
     <script src="main.js"></script>
 </body>
 </html>
